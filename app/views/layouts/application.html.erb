@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MessageMe</title>
+    <title>Messenger</title>
+    <%= favicon_link_tag %>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -9,6 +10,9 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'partials/navbar' %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
