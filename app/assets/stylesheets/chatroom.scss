@@ -1,0 +1,16 @@
+.chat-container{
+  height: calc( 100vh - 150px );
+}
+.user-icon{
+  font-size: 24px;
+}
+.chat-messages {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+@include media-breakpoint-down(sm) {
+  .chat-container{
+    height: calc( 100vh - 350px );
+  }
+}
