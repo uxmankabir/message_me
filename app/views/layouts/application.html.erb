@@ -17,5 +17,7 @@
     <div class="container">
       <%= yield %>
     </div>
+    <%= render "partials/errors" %>
+    <%= yield :javascript %>
   </body>
 </html>

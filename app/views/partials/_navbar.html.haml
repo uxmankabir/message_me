@@ -4,10 +4,20 @@
     %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarNav", "data-bs-toggle" => "collapse", :type => "button"}
       %span.navbar-toggler-icon
     #navbarNav.collapse.navbar-collapse
-      %ul.navbar-nav
+      %ul.navbar-nav.me-auto
         %li.nav-item
           = link_to 'Chatroom', chatroom_path, class: "nav-link active"
         %li.nav-item
           = link_to 'Messages', root_path, class: "nav-link"
         %li.nav-item
           = link_to 'Blog', root_path, class: "nav-link"
+      %ul.navbar-nav
+        - unless user_signed_in?
+          %li.nav-item
+            = link_to 'Sign in', new_user_session_path, class: "nav-link active"
+          %li.nav-item
+            = link_to 'Sign up', new_user_registration_path, class: "nav-link"
+        - else
+          %li.nav-item
+            = link_to 'Sign out', destroy_user_session_path, method: :delete, class: "nav-link"
+      

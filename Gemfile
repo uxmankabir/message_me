@@ -13,6 +13,12 @@ gem 'rails', '~> 5.1.7'
 
 # Use PostgreSQL as the database for Active Record
 gem 'pg'
+
+# Users authentication
+gem 'devise'
+
+gem "figaro"
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
