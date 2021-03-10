@@ -1,36 +1,24 @@
 .row.mt-3
   .col-md-3.col-12
-    %div.h5 Online Members
+    %div.h5
+      = "Online Members (#{User.online.count})"
     %ul.list-group.list-group-flush
-      %li.list-group-item.px-0 John Smith
-      %li.list-group-item.px-0 Usman Kabir
-      %li.list-group-item.px-0 Darren Press
-      %li.list-group-item.px-0 Mo Salah
-      %li.list-group-item.px-0 Masrur
+      - User.online.each do |user|
+        %li.list-group-item.px-0
+          = user.name
+
   .col
     .card
       .card-body
         .chat-container.d-flex.flex-column
           .chat-messages
-            .row.mb-2
-              .col-auto.d-flex.align-items-center.text-primary
-                %i.bi.bi-person-circle.user-icon
-              .col.d-flex.align-items-center
-                This is message 1
-            .row.mb-2
-              .col-auto.d-flex.align-items-center.text-primary
-                %i.bi.bi-person-circle.user-icon
-              .col.d-flex.align-items-center
-                This is message 2
-            .row.mb-2
-              .col-auto.d-flex.align-items-center.text-primary
-                %i.bi.bi-person-circle.user-icon
-              .col.d-flex.align-items-center
-                This is message 3
+            - @messages.each do |message|
+              = render 'partials/message', message: message
           .row.mt-auto
             .col
-              .input-group.mb-3
-                %input.form-control{"aria-describedby" => "messageInputField", "aria-label" => "Type a message.", :placeholder => "Type a message...", :type => "text"}/
-                %button#messageInputField.btn.btn-primary{:type => "button"}
-                  %i.bi.bi-cursor
+              = form_for @message, remote: true do |f|
+                .input-group
+                  = f.text_field :text, {class: "form-control", "aria-describedby" => "messageInputField", "aria-label" => "Type a message.", :placeholder => "Type a message...", :type => "text"}
+                  = f.button :submit, class: "btn btn-primary", id: "messageInputField" do
+                    %i.bi.bi-cursor
 
